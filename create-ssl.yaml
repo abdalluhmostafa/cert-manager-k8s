@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1alpha3
+kind: Certificate
+metadata:
+  generation: 1
+  labels:
+    app: YOUR-LABEL
+    #app: tomcat
+  name: ssl-tls-ingress
+  namespace: default
+spec:
+  dnsNames:
+  - DOMAIN
+  issuerRef:
+    group: cert-manager.io
+    kind: ClusterIssuer
+    name: letsencrypt-prod
+  secretName: ssl-tls-ingress
