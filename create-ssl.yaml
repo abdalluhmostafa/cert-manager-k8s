@@ -6,6 +6,11 @@ metadata:
     app: YOUR-LABEL
   name: ssl-tls-ingress
   namespace: default
+  ownerReferences:
+  - apiVersion: networking.k8s.io/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Ingress
 spec:
   dnsNames:
   - DOMAIN
@@ -14,3 +19,6 @@ spec:
     kind: ClusterIssuer
     name: letsencrypt-prod
   secretName: ssl-tls-ingress
+  usages:
+  - digital signature
+  - key encipherment
